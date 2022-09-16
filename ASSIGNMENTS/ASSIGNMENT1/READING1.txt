@@ -1,0 +1,60 @@
+SECTION1.Business Applications
+		Clients(Customers) - Networks - Server(Business Organization)
+		Resource Sharing
+			Hardware, Software,Information
+		Providing Communication Media
+			Email, Video Conferencing
+		Doing Business Electronically
+			B2B,B2C,E-Commerce
+		Goals of Network for Companies
+			Resource Sharing
+				Equipment, Program, Data
+			High Reliability
+				Replicated Data, Hardware
+			Saving Money
+				Main Frame
+					Faster but expensive
+				Client-Server Model
+			Scalibility
+				Main Frame
+					Replace a large if damaged
+				Client-Server Model
+					Add more servers
+
+SECTION2.Home Applications
+		Access to Remote Information
+			Eg: Financial, Shopping, Customized Newspaper, Online Digital Library, WWW
+		Person-to-Person Communication
+			Eg: Email, Video Conferencing, News Group
+		Interactive Entertainment
+			Peer-to-Peer Systems
+				No Fixed Clients or Servers
+			Eg: TVs, Game Playing
+		Electronic Commerce
+			Business-to-Consumer
+				Eg: Ordering Books
+			Business-to-Business
+				Eg: Car Manufactoring ordering Tires from Suppliers 
+			Government-to-Consumer
+				Eg: Distributing Tax Forms
+			Consumer-to-Consumer
+				Eg: Auctioning Second-hand Products
+			Peer-to-Peer
+
+SECTION3. Computer Hardware Classifications
+	Local Area Network(LAN)
+		Limited Area
+		Devices
+			Wired LAN
+				Eg: Ethernet - Hub, Switch
+			Wireless LAN
+				Eg: Wifi
+	Metropolitan Area Network(MAN)
+		Geographic Region of Metropolitan Area
+		Devices
+			Switches/Hub
+			Routers/Briges
+	Wide Area Network (WAN)
+		Extends large geographical area
+	The Internet
+		
