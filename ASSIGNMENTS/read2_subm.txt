@@ -1,0 +1,22 @@
+Network Design Issues
+	Store and foward packet switching
+		The host sends the packet to the nearest router
+		This packet is stored there until it has fully arrived once the link is fully processed by verifiying the checksum then it is forwarded to the next router till it reaches the destination
+	Services provided to the transport layer
+		The network layer provides services to the tranport layer at the network layer/transport layer interface.
+		The services need to be carefully designed with the goals in mind.
+		The services should be independent of the router technology.
+		The transport layer should be shilded from the number, type, and topology of the routers present.
+		The network addresses made available to the transport layer should use a uniform numbering plan, even across LANs and WANs.
+	Implementaiton of connectionless service
+		No connection setup.
+		Message is broken into packets and each packet is individually routed.
+		Routers decides line based on routing table.
+		Packets may follow different paths.
+		Not guaranteed to arrive in order.
+	Implementation of connection-orientated services
+		Connection is establishbed beforehand.
+		Message is broken into packets and routed over the established route.
+		Reliable data transmission.
+Routing Algorithms
+	
