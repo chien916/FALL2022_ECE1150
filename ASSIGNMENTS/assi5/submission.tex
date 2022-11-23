@@ -1,0 +1,444 @@
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and export to LaTeX again.
+
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{epstopdf}
+\usepackage[table]{xcolor}
+\usepackage{matlab}
+
+\sloppy
+\epstopdfsetup{outdir=./}
+\graphicspath{ {./submission_images/} }
+
+\matlabmultipletitles
+
+\begin{document}
+
+\matlabtitle{ECE1150 ASSIGNMENT5}
+
+\begin{par}
+\begin{flushleft}
+Yinhao Qian @ University of Pittsburgh
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+%please ignore this block
+answer = @(num,unit) fprintf("<strong> ANSWER: %s [%s]" + ...
+    " </strong>\n",mat2str(num),unit);
+question = @() eval("clearvars -except answer question");
+\end{matlabcode}
+
+
+\matlabtitle{Q1}
+
+\begin{par}
+\begin{flushleft}
+Frequency division duplex requires two frequencies, and quadrature amplitude modulation ,although requires mutiple amplitudes and phases, only requires one frequency.\textbf{ Totalling up to two frequencies.}
+\end{flushleft}
+\end{par}
+
+
+\matlabtitle{Q2}
+
+\begin{matlabcode}
+question();
+4e3*8+150*(8-1);
+answer(ans,"Hz");
+\end{matlabcode}
+\begin{matlaboutput}
+ ANSWER: 33050 [Hz] 
+\end{matlaboutput}
+
+
+\matlabtitle{Q3}
+
+\matlabheading{ALOHA}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item{\begin{flushleft} Transmit a frame whenever you want. \end{flushleft}}
+   \item{\begin{flushleft} If there is a collision, no ackowledgement will be received. \end{flushleft}}
+\end{itemize}
+
+\matlabheading{Slotted ALOHA}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item{\begin{flushleft} Sychronizing senders to slots, which reduces collisions. \end{flushleft}}
+   \item{\begin{flushleft} Fixing the starting and ending times to specific values. (time slots) \end{flushleft}}
+   \item{\begin{flushleft} When a node has frame to send, it waits till the beginning of the next slot and transmits the frame. \end{flushleft}}
+   \item{\begin{flushleft} If collision occurs, a node transmits the frame in subsequent slot with certain probabilitity. \end{flushleft}}
+   \item{\begin{flushleft} Repeat attempts until frame is successfully received. \end{flushleft}}
+   \item{\begin{flushleft} Suitable for low traffic. \end{flushleft}}
+\end{itemize}
+
+\matlabheading{CSMA}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item{\begin{flushleft} Carriers will sense multiple access. \end{flushleft}}
+   \item{\begin{flushleft} If sensed channel is idle, transmit entire frame. \end{flushleft}}
+   \item{\begin{flushleft} If sensed channel is busy, defer the transmission. \end{flushleft}}
+\end{itemize}
+
+\matlabheading{CSMA/CD}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item{\begin{flushleft} CSMA with collusion detection. \end{flushleft}}
+   \item{\begin{flushleft} If collision is detected after transmission, devices ceases tranmission. \end{flushleft}}
+   \item{\begin{flushleft} Each node involved in collision waits for a random delay before retransmitting the frame. \end{flushleft}}
+\end{itemize}
+
+\matlabheading{Polling}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item{\begin{flushleft} One node acts as master node \end{flushleft}}
+   \item{\begin{flushleft} Master node polls other nodes in a round robin fashion to check whether they have data to transmit. \end{flushleft}}
+   \item{\begin{flushleft} Node may or may not have data to send. \end{flushleft}}
+   \item{\begin{flushleft} Used in Bluetooth. \end{flushleft}}
+\end{itemize}
+
+
+\matlabtitle{Q4}
+
+\begin{matlabcode}
+question();
+\end{matlabcode}
+
+\begin{par}
+\begin{flushleft}
+In slotted ALOHA, only one frame of transmission is allowed at a certain time stamp. The efficiency is directly propotional to the probability of sucess, which can be calculated using the following:
+\end{flushleft}
+\end{par}
+
+\begin{par}
+$$S=G*\exp \left(-G\right)$$
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+It is maximized when only one frame is transmitted during slot time:
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+G = 1;
+S = G*exp(-G);
+answer(S,"");
+\end{matlabcode}
+\begin{matlaboutput}
+ ANSWER: 0.367879441171442 [] 
+\end{matlaboutput}
+
+
+\matlabtitle{Q5}
+
+\begin{matlabcode}
+question();
+syms M H B Ptx Pe;
+t = (M+H)/B;%tranmission time
+tp = (Ptx*(1-Pe)*M)/t%throughput
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+tp = 
+
+\hskip1em $\displaystyle -\frac{B\,M\,\textrm{Ptx}\,{\left(\textrm{Pe}-1\right)}}{H+M}$
+\end{matlabsymbolicoutput}
+\begin{matlabcode}
+eff = tp/B%efficiency
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+eff = 
+
+\hskip1em $\displaystyle -\frac{M\,\textrm{Ptx}\,{\left(\textrm{Pe}-1\right)}}{H+M}$
+\end{matlabsymbolicoutput}
+
+
+\matlabheading{For Q6, for some reasons the symbolic evaluation algorithms in MATLAB, the negative sign seems to be preferred to be shown like the following:}
+
+\begin{par}
+$$\left(1-p\right)=-\left(p-1\right)$$
+\end{par}
+
+\matlabheading{The answer might looks ugly, but they should be correct in value.}
+
+\matlabtitle{Q6A}
+
+\begin{matlabcode}
+question();
+syms p;%probability of tranmission
+\end{matlabcode}
+
+\begin{par}
+\begin{flushleft}
+Since it's slotted ALOHA, the tranmission is sucessful if and only if this node A is tranmitting but other three nodes are not.
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+p_suceed = p*(1-p)^3;
+\end{matlabcode}
+
+\begin{par}
+\begin{flushleft}
+Since it's the 5th slots, four attempts were failed.
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+p_a5 = (1-p_suceed)^4*p_suceed
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+p\_a5 = 
+
+\hskip1em $\displaystyle -p\,{{\left(p\,{{\left(p-1\right)}}^3 +1\right)}}^4 \,{{\left(p-1\right)}}^3 $
+\end{matlabsymbolicoutput}
+
+\matlabtitle{Q6B}
+
+\begin{par}
+\begin{flushleft}
+Since only one node can sucessfully tranmit in one slot, the probabilities of either of multiple sucessful tranmits are mutually exclusive:
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+p_either4 = p_suceed+p_suceed+p_suceed+p_suceed
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+p\_either4 = 
+
+\hskip1em $\displaystyle -4\,p\,{{\left(p-1\right)}}^3 $
+\end{matlabsymbolicoutput}
+
+\matlabtitle{Q6C}
+
+\begin{par}
+\begin{flushleft}
+It means that all tranmissions are failed for the first two slots, which means none of nodes get to tranmit:
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+p_3f = (1-p_either4)^2+p_either4
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+p\_3f = 
+
+\hskip1em $\displaystyle {{\left(4\,p\,{{\left(p-1\right)}}^3 +1\right)}}^2 -4\,p\,{{\left(p-1\right)}}^3 $
+\end{matlabsymbolicoutput}
+
+\matlabtitle{Q6D}
+
+\begin{par}
+\begin{flushleft}
+A slot is effective as long as either nodes sucessfully transmit:
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+eff = p_either4
+\end{matlabcode}
+\begin{matlabsymbolicoutput}
+eff = 
+
+\hskip1em $\displaystyle -4\,p\,{{\left(p-1\right)}}^3 $
+\end{matlabsymbolicoutput}
+
+
+\matlabtitle{Q7A}
+
+\begin{matlabcode}
+question();
+m = 0b1011011u64;%[] message
+l = ceil(log2(double(m)));%[] message length
+g = 0b1101u64;%[] generator
+n = ceil(log2(double(g)))-1;%[] generator length
+\end{matlabcode}
+
+\begin{par}
+\begin{flushleft}
+To mimic the mod2 division programatically, I'll shift the generator all the way to the left, XOR it with the messanger, and shift the generator one bit to the right, and XOR it with the messanger again, etc.. 
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+g = bitsll(g,l-1);
+m = bitsll(m,n);
+for k = 1:l
+    if bitget(m,l+n)
+        m = bitxor(m,g);
+    end
+    m = bitshift(m,1);
+end
+crc = bitsrl(m,l);
+answer(dec2bin(crc,n),"");
+\end{matlabcode}
+\begin{matlaboutput}
+ ANSWER: '001' [] 
+\end{matlaboutput}
+
+\matlabtitle{Q7B}
+
+\begin{matlabcode}
+m = 0b1011011u64;
+l = ceil(log2(double(m)));
+g = 0b1101u64;
+n = ceil(log2(double(g)))-1;
+g = bitsll(g,l-1);
+m = bitsll(m,n);
+\end{matlabcode}
+
+\begin{par}
+\begin{flushleft}
+I'll manually set the crc to the 3 bits on the right.
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+m = bitor(m,crc);
+for k = 1:l
+    if bitget(m,l+n)
+        m = bitxor(m,g);
+    end
+    m = bitshift(m,1);
+end
+rem = bitsrl(m,l);
+\end{matlabcode}
+
+\begin{par}
+\begin{flushleft}
+The remainder should be zero. If rem==0 evaluautes to true, it means no error.
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+answer(rem==0,"");
+\end{matlabcode}
+\begin{matlaboutput}
+ ANSWER: true [] 
+\end{matlaboutput}
+
+
+\matlabtitle{Q8A}
+
+\begin{matlabcode}
+question();
+packet = 20e3*8;
+delay_prop = 5e3/2.5e8;%[s] propagation delay
+delay_tran = packet/1e8;%[s] tranmission delay per packet
+\end{matlabcode}
+
+\begin{par}
+\begin{flushleft}
+Since it's full-duplex and communications are bi-directional, packet-sending propagation and acknowlegement-receiving propagation can be combined into one. 
+\end{flushleft}
+\end{par}
+
+\matlabheading{Cycle1:}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer =\textgreater{} Packet 1 =\textgreater{} Reciver (Prop + Tran)
+\end{flushleft}
+\end{par}
+
+\matlabheading{Cycle2:}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer \textless{}= ACK 1 \textless{}= Reciver (Prop)
+\end{flushleft}
+\end{par}
+
+\matlabheading{Cycle3:}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer =\textgreater{} Packet 2 =\textgreater{} Reciver (Prop + Tran)
+\end{flushleft}
+\end{par}
+
+\matlabheading{Cycle4:}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer \textless{}= ACK 2 \textless{}= Reciver (Prop)
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+t = delay_prop*4+delay_tran*2;%[s] times to complete service
+tp = packet*2/t;
+answer(tp,"bits/s");
+\end{matlabcode}
+\begin{matlaboutput}
+ ANSWER: 97560975.6097561 [bits/s] 
+\end{matlaboutput}
+
+\matlabtitle{Q8B}
+
+\begin{par}
+\begin{flushleft}
+In this case, two packets are trasmitted non-stop as the window size is 2.
+\end{flushleft}
+\end{par}
+
+\matlabheading{Cycle1:}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer =\textgreater{} Packet 1 =\textgreater{} Reciver (Prop + Tran)
+\end{flushleft}
+\end{par}
+
+\matlabheading{Cycle2:}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer \textless{}= ACK 1 \textless{}= Reciver (Shar Prop)
+\end{flushleft}
+\end{par}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer =\textgreater{} Packet 2 =\textgreater{} Reciver (Shar Prop + Tran)
+\end{flushleft}
+\end{par}
+
+\matlabheading{Cycle3:}
+
+\begin{par}
+\begin{flushleft}
+Transmitteer \textless{}= ACK 2 \textless{}= Reciver (Prop)
+\end{flushleft}
+\end{par}
+
+\begin{matlabcode}
+t = delay_prop*3+delay_tran*2;
+tp = packet*2/t;
+answer(tp,"bits/s");
+\end{matlabcode}
+\begin{matlaboutput}
+ ANSWER: 98159509.202454 [bits/s] 
+\end{matlaboutput}
+
+\begin{par}
+\begin{flushleft}
+The continuous ARQ in this case is more efficient than the stop and wait ARQ.
+\end{flushleft}
+\end{par}
+
+\end{document}
